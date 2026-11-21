@@ -75,6 +75,7 @@ service.bat
 | `WXAI_MIN_GAP` | 同一会话两次回复最小间隔（秒） |
 | `WXAI_MAX_REPLIES_PER_MIN` | 全局每分钟上限（防失控） |
 | `WXAI_SKIP_PREFIX` | 排除的会话前缀/后缀（公众号、系统号） |
+| `WXAI_SKIP_CHATS` | 排除的会话 wxid（逗号分隔）：这些号**永远不私聊回复** |
 | `WXAI_ESCALATE` / `_TO` | 人工接管提醒开关 / 推送到哪个会话 |
 | `WXAI_DIGEST_AT` | 每天几点发汇总（`21:00`），留空用 `WXAI_DIGEST_EVERY` 按秒 |
 | `WXAI_BASE_URL` / `WXAI_MODEL` / `OPENAI_API_KEY` | 模型（OpenAI 兼容：DeepSeek、通义、Moonshot、本地 Ollama 都行） |

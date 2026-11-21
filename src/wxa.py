@@ -66,6 +66,7 @@ AT_ONLY = env("WXAI_AT_ONLY", "0") == "1"
 AT_CFG = [x.strip() for x in env("WXAI_AT_NAME", "").split(",") if x.strip()]
 HINT = env("WXAI_HINT", "")
 SELF_CHATS = set(x for x in env("WXAI_SELF_CHATS", "filehelper").split(",") if x.strip())
+SKIP_CHATS = set(x for x in env("WXAI_SKIP_CHATS", "").split(",") if x.strip())
 MIN_GAP = float(env("WXAI_MIN_GAP", "8"))
 AUTO = env("WXAI_AUTO_PRIVATE", "0") == "1"
 MAX_PER_MIN = int(env("WXAI_MAX_REPLIES_PER_MIN", "10"))
@@ -369,10 +370,10 @@ def send(c, a):
 _last_digest = [time.time()]
 _next_digest = [next_fire(time.time())]
 
-print("[bot] v9 watch=%s auto=%s mock=%s dry=%s at_only=%s esc=%s digest_at=%s every=%ss "
-      "me=%s nick=%s"
-      % (WATCH, AUTO, MOCK, DRY, AT_ONLY, ESC_ON, DIGEST_AT or "-", DIGEST_EVERY,
-         me or "?", nick or "?"))
+print("[bot] v10 watch=%s auto=%s skip_chats=%s mock=%s dry=%s at_only=%s esc=%s "
+      "digest_at=%s every=%ss me=%s nick=%s"
+      % (WATCH, AUTO, sorted(SKIP_CHATS) or "-", MOCK, DRY, AT_ONLY, ESC_ON,
+         DIGEST_AT or "-", DIGEST_EVERY, me or "?", nick or "?"))
 for g, names in GROUP_AT.items():
     print("[bot] %s at_names=%s" % (g, sorted(names)))
 
@@ -400,6 +401,9 @@ while True:
             sender, body = split_prefix(raw)
             if c in SELF_CHATS:
                 print("[bot] skip self-chat %s: %s" % (c, body[:30]))
+                continue
+            if c in SKIP_CHATS:
+                print("[bot] skip excluded chat %s: %s" % (c, body[:30]))
                 continue
             if sender and me and sender == me:
                 print("[bot] skip own msg: %s" % body[:30])
