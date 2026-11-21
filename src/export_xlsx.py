@@ -3,10 +3,10 @@
 import io, os, sqlite3, sys, time
 from datetime import datetime
 
-BASE = os.path.dirname(os.path.abspath(__file__))
-DB = os.path.join(BASE, "chat_log.db")
-OUT_XLSX = os.path.join(BASE, "chat_log.xlsx")
-OUT_CSV = os.path.join(BASE, "chat_log.csv")
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+DB = os.path.join(ROOT, "data", "chat_log.db")
+OUT_XLSX = os.path.join(ROOT, "data", "chat_log.xlsx")
+OUT_CSV = os.path.join(ROOT, "data", "chat_log.csv")
 
 HEAD = ["\u65f6\u95f4", "\u4f1a\u8bdd", "\u6635\u79f0", "\u5bf9\u65b9\u8bf4", "AI \u56de\u590d"]
 

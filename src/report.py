@@ -13,8 +13,8 @@ import sqlite3
 import sys
 import time
 
-BASE = os.path.dirname(os.path.abspath(__file__))
-DB = os.path.join(BASE, "chat_log.db")
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+DB = os.path.join(ROOT, "data", "chat_log.db")
 
 T = {
     "title": "\u5fae\u4fe1 AI \u52a9\u624b\u00b7\u5bf9\u8bdd\u770b\u677f",
