@@ -1,0 +1,17 @@
+# wechatauto-replica 的依赖（故意不含 winsdk：它只有 cp38-cp312 轮子，
+# Python 3.13 上装不了；不装也能用，代码会自动关掉 OCR 走 UIA 发送）
+uiautomation>=2.0.18
+pywin32>=305
+pyperclip>=1.8.2
+Pillow>=9.0.0
+psutil>=5.9.0
+colorama>=0.4.6
+cryptography>=41.0.0
+imageio-ffmpeg>=0.4.9
+zstandard>=0.19.0
+pyautogui>=0.9.53
+opencv-python>=4.8.0
+pypinyin>=0.48.0
+
+# 导出 Excel 用
+openpyxl>=3.1.0

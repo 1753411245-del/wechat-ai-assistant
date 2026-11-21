@@ -1,0 +1,13 @@
+.venv/
+.venv312/
+__pycache__/
+*.pyc
+config.env
+data/
+logs/
+*.log
+*.db
+*.xlsx
+*.csv
+.DS_Store
+Thumbs.db
